@@ -53,7 +53,7 @@ export const convertPrice = (price) => {
     }
 }
 
-export const initFacebookSDK = () => {
+export const initFacebook = () => {
     if (window.FB) {
       window.FB.XFBML.parse();
     }
@@ -67,16 +67,16 @@ export const initFacebookSDK = () => {
         version: "v2.1" // use version 2.1
       });
     };
-    // Load the SDK asynchronously
+    // Load the  asynchronously
     (function (d, s, id) {
       var js,
         fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s);
       js.id = id;
-      js.src = `//connect.facebook.net/${locale}/sdk.js`;
+      js.src = `//connect.facebook.net/${locale}/.js`;
       fjs.parentNode.insertBefore(js, fjs);
-    })(document, "script", "facebook-jssdk");
+    })(document, "script", "facebook-js");
   };
 
   export const convertDataChart = (data, type) => {

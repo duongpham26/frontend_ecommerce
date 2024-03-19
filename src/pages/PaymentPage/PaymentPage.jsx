@@ -26,7 +26,7 @@ const PaymentPage = () => {
   const [delivery, setDelivery] = useState('fast')
   const [payment, setPayment] = useState('later_money')
   const navigate = useNavigate()
-  const [sdkReady, setSdkReady] = useState(false)
+  // const [sdkReady, setSdkReady] = useState(false)
 
   const [isOpenModalUpdateInfo, setIsOpenModalUpdateInfo] = useState(false)
   const [stateUserDetails, setStateUserDetails] = useState({
@@ -219,25 +219,25 @@ const PaymentPage = () => {
     setPayment(e.target.value)
   }
 
-  const addPaypalScript = async () => {
-    const { data } = await PaymentService.getConfig()
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = `https://www.paypal.com/sdk/js?client-id=${data}`
-    script.async = true;
-    script.onload = () => {
-      setSdkReady(true)
-    }
-    document.body.appendChild(script)
-  }
+  // const addPaypalScript = async () => {
+  //   const { data } = await PaymentService.getConfig()
+  //   const script = document.createElement('script')
+  //   script.type = 'text/javascript'
+  //   script.src = `https://www.paypal.com/sdk/js?client-id=${data}`
+  //   script.async = true;
+  //   script.onload = () => {
+  //     setSdkReady(true)
+  //   }
+  //   document.body.appendChild(script)
+  // }
 
-  useEffect(() => {
-    if (!window.paypal) {
-      addPaypalScript()
-    } else {
-      setSdkReady(true)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (!window.paypal) {
+  //     addPaypalScript()
+  //   } else {
+  //     setSdkReady(true)
+  //   }
+  // }, [])
 
   return (
     <div style={{ background: '#f5f5fa', with: '100%', height: '100vh' }}>
@@ -296,7 +296,7 @@ const PaymentPage = () => {
                   </span>
                 </WrapperTotal>
               </div>
-              {payment === 'paypal' && sdkReady ? (
+              {payment === 'paypal' ? (
                 <div style={{ width: '320px' }}>
                   <PayPalButton
                     amount={Math.round(totalPriceMemo / 30000)}
